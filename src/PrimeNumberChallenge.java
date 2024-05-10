@@ -2,7 +2,7 @@ public class PrimeNumberChallenge {
 
     public static void main(String[] args) {
 
-        System.out.println("The total number of prime number is " + primeCounter(6));
+        System.out.println("The total number of prime numbers is " + primeCounter(6));
 
     }
 

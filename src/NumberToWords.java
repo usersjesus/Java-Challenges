@@ -1,0 +1,74 @@
+public class NumberToWords {
+    public static void main(String[] args) {
+
+        numberToWords(234);
+        numberToWords(-1000);
+        numberToWords(1000);
+//        System.out.println(reverse(-121));
+//        System.out.println(getDigitCount(0));
+//        System.out.println(getDigitCount(123));
+//        System.out.println(getDigitCount(-12));
+
+    }
+
+    public static void numberToWords(int number) {
+
+        if(number < 0) {
+            System.out.println("Invalid Value");
+        }
+
+        int reversedNumber = reverse(number);
+        int numberOfDigits = getDigitCount(reversedNumber);
+
+       while (numberOfDigits > 0) {
+           String digitInWords = switch (reversedNumber % 10) {
+               case 0 -> "Zero";
+               case 1 -> "One";
+               case 2 -> "Two";
+               case 3 -> "Three";
+               case 4 -> "Four";
+               case 5 -> "Five";
+               case 6 -> "Six";
+               case 7 -> "Seven";
+               case 8 -> "Eight";
+               case 9 -> "Nine";
+               default -> throw new IllegalStateException("Unexpected value: " + reversedNumber % 10);
+           };
+           System.out.println(digitInWords);
+           numberOfDigits = getDigitCount(reversedNumber /= 10);
+           reversedNumber /= 10;
+       }
+    }
+
+    public static int reverse(int number) {
+
+        int reversedNumber = 0;
+
+        while (number != 0) {
+            reversedNumber = reversedNumber * 10 + (number % 10);
+            number /= 10;
+        }
+
+        return reversedNumber;
+    }
+
+    public static int getDigitCount(int number) {
+
+        if (number < 0) {
+            return -1;
+        }
+
+        int count = 0;
+
+        if (number == 0) {
+            return 1;
+        }
+
+        while (number > 0) {
+            count ++;
+            number /= 10;
+        }
+
+        return count;
+    }
+}
